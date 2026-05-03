@@ -41,11 +41,11 @@ rm -f "$STAGING/include/PRESUBMIT.py"
 
 case "$OS-$BUILD_TYPE" in
   android-shared|linux-shared)
-    mv "$BUILD/libpdfium.so" "$STAGING_LIB"
+    mv "$BUILD/libpdfium_core.so" "$STAGING_LIB"
     ;;
 
   android-static|linux-static|mac-static|ios-static)
-    mv "$BUILD/obj/libpdfium.a" "$STAGING_LIB"
+    mv "$BUILD/obj/libpdfium_core.a" "$STAGING_LIB"
     ;;
 
   mac-shared|ios-shared)

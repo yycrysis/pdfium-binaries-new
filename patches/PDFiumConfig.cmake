@@ -6,7 +6,7 @@
 #   2. in your CMakeLists.txt, add
 #       find_package(PDFium)
 #   3. then link your executable with PDFium
-#       target_link_libraries(my_exe pdfium)
+#       target_link_libraries(my_exe pdfium_core)
 
 include(FindPackageHandleStandardArgs)
 
@@ -20,17 +20,17 @@ set(PDFium_VERSION "#VERSION#")
 
 if(WIN32)
   find_file(PDFium_LIBRARY
-        NAMES "pdfium.dll"
+        NAMES "pdfium_core.dll"
         PATHS "${CMAKE_CURRENT_LIST_DIR}"
         PATH_SUFFIXES "bin")
 
   find_file(PDFium_IMPLIB
-        NAMES "pdfium.dll.lib"
+        NAMES "pdfium_core.dll.lib"
         PATHS "${CMAKE_CURRENT_LIST_DIR}"
         PATH_SUFFIXES "lib")
 
-  add_library(pdfium SHARED IMPORTED)
-  set_target_properties(pdfium
+  add_library(pdfium_core SHARED IMPORTED)
+  set_target_properties(pdfium_core
     PROPERTIES
     IMPORTED_LOCATION             "${PDFium_LIBRARY}"
     IMPORTED_IMPLIB               "${PDFium_IMPLIB}"
@@ -43,12 +43,12 @@ if(WIN32)
   )
 else()
   find_library(PDFium_LIBRARY
-        NAMES "pdfium"
+        NAMES "pdfium_core"
         PATHS "${CMAKE_CURRENT_LIST_DIR}"
         PATH_SUFFIXES "lib")
 
-  add_library(pdfium SHARED IMPORTED)
-  set_target_properties(pdfium
+  add_library(pdfium_core SHARED IMPORTED)
+  set_target_properties(pdfium_core
     PROPERTIES
     IMPORTED_LOCATION             "${PDFium_LIBRARY}"
     INTERFACE_INCLUDE_DIRECTORIES "${PDFium_INCLUDE_DIR};${PDFium_INCLUDE_DIR}/cpp"

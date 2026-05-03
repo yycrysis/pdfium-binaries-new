@@ -6,12 +6,12 @@ index 62210c2f6..053fbff6d 100644
    ]
  }
  
--component("pdfium") {
-+shared_library("pdfium") {
-   output_name = "pdfium"
+-component("pdfium_core") {
++shared_library("pdfium_core") {
+   output_name = "pdfium_core"
    libs = []
    configs += [ ":pdfium_strict_config" ]
-@@ -381,6 +381,9 @@ component("pdfium") {
+@@ -381,6 +381,9 @@ component("pdfium_core") {
        "gdi32.lib",
        "user32.lib",
      ]
